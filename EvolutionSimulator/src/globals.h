@@ -18,9 +18,6 @@ GLFWwindow* window;
 int frames;
 char* windowTitle;
 uint32_t frameLimit;
-int swidth;
-int sheight;
-int csf; // current scale factor
 char* fitnessName;
 char* fitnessUnit;
 int minBar;

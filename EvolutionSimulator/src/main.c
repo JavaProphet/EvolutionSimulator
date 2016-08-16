@@ -91,14 +91,6 @@ void displayCallback() {
 	}
 	frames++;
 	glfwGetFramebufferSize(window, &width, &height);
-	int sf = csf;
-	swidth = width;
-	sheight = height;
-	while (sf < 1000 && swidth / (sf + 1) >= 320 && sheight / (sf + 1) >= 240) {
-		sf++;
-	}
-	swidth = (int) ceil(swidth / sf);
-	sheight = (int) ceil(sheight / sf);
 	clock_gettime(CLOCK_MONOTONIC, &__main_ts);
 	double ms2 = (double) __main_ts.tv_sec * 1000. + (double) __main_ts.tv_nsec / 1000000.;
 	__main_lfms = ms2;
@@ -145,7 +137,6 @@ void __error_callback(int error, const char* description) {
 }
 
 int main(int argc, char* argv[]) {
-	csf = 1;
 	//#ifdef __MINGW32__
 	//	WORD versionWanted = MAKEWORD(1, 1);
 	//	WSADATA wsaData;
@@ -168,14 +159,6 @@ int main(int argc, char* argv[]) {
 	main_preinit();
 	width = 800;
 	height = 600;
-	swidth = width;
-	sheight = height;
-	int sf = csf;
-	while (sf < 1000 && swidth / (sf + 1) >= 320 && sheight / (sf + 1) >= 240) {
-		sf++;
-	}
-	swidth = (int) ceil(swidth / sf);
-	sheight = (int) ceil(sheight / sf);
 	if (!glfwInit()) return -1;
 	glfwWindowHint(GLFW_DOUBLEBUFFER, 1);
 	//glfwWindowHint(GLFW_SAMPLES, 4); // antialiasing
